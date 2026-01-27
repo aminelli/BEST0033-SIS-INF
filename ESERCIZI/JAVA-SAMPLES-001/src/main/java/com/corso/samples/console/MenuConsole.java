@@ -2,13 +2,15 @@ package com.corso.samples.console;
 
 import java.util.Scanner;
 
-public class MenuConsole {
+public class MenuConsole  {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     // Costruttore: serve ad inizializzare l'oggetto che si sta cercando di creare
     public MenuConsole() {
         scanner = new Scanner(System.in);
+
+
         /*
         Scanner sc1 = new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
@@ -48,7 +50,7 @@ public class MenuConsole {
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
         System.out.println("");
-        System.out.println("Scegli una voce di menu");
+        System.out.println("Scegli una voce di menu...");
     }
 
     private int loadMenu() {

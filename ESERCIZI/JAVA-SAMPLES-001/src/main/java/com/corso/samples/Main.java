@@ -9,7 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new MenuConsole().showMenu();
+        Integer a = 200;
+        Integer b = 200;
+        boolean test = (a == b);
+
+        test = a.equals(b);
+
+        // new MenuConsole().showMenu();
 
     }
 
