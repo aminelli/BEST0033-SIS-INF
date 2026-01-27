@@ -1,5 +1,7 @@
 package com.corso.samples.console;
 
+import com.corso.samples.datatypes.BigDecimalDemo;
+
 import java.util.Scanner;
 
 public class MenuConsole  {
@@ -42,7 +44,7 @@ public class MenuConsole  {
         System.out.println("\n".repeat(10) + "=".repeat(60));
         System.out.println("MENU PRINCIPALE");
         System.out.println("=".repeat(60));
-        System.out.println("1.");
+        System.out.println("1. BigDecimal Demo");
         System.out.println("2.");
         System.out.println("3.");
         System.out.println("4.");
@@ -69,6 +71,7 @@ public class MenuConsole  {
 
         switch (menuIndex) {
             case 1:
+                BigDecimalDemo.sample();
                 break;
             case 2:
                 break;
