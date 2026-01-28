@@ -2,6 +2,7 @@ package com.corso.samples.console;
 
 import com.corso.samples.datatypes.BigDecimalDemo;
 import com.corso.samples.datatypes.DateDemo;
+import com.corso.samples.datatypes.LiteralDemo;
 import com.corso.samples.datatypes.OperatoriDemo;
 
 import java.util.Scanner;
@@ -82,6 +83,7 @@ public class MenuConsole  {
                 OperatoriDemo.sample();
                 break;
             case 4:
+                LiteralDemo.sample();
                 break;
             case 0:
                 return false;
