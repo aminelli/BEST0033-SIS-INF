@@ -450,7 +450,7 @@ public class DateDemo {
         LocalDate inizioMese = oggi.with(TemporalAdjusters.firstDayOfMonth());
         LocalDate fineMese = oggi.with(TemporalAdjusters.lastDayOfMonth());
         System.out.println("  Giorni nel mese corrente: " +
-                ChronoUnit.DAYS.between(inizioMese, fineMese) + 1);
+                (ChronoUnit.DAYS.between(inizioMese, fineMese) + 1));
 
         LocalDate prossimoCompleanno = LocalDate.of(oggi.getYear(), 6, 15);
         if (prossimoCompleanno.isBefore(oggi)) {
