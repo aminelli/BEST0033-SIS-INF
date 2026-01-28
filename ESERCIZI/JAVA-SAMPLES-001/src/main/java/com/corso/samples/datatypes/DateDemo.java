@@ -14,7 +14,7 @@ import java.util.Locale;
  */
 public class DateDemo {
 
-    public static void main(String[] args) {
+    public static void sample() {
         System.out.println("╔════════════════════════════════════════════════════╗");
         System.out.println("║   ESEMPIO COMPLETO SULL'USO DELLE DATE IN JAVA     ║");
         System.out.println("╚════════════════════════════════════════════════════╝\n");
