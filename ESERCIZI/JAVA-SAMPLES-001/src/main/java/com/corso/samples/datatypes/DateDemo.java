@@ -178,10 +178,10 @@ public class DateDemo {
 
         // Formatter con stili
         System.out.println("\nStili predefiniti:");
-        System.out.println("  FULL: " + dataOra.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)));
-        System.out.println("  LONG: " + dataOra.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)));
-        System.out.println("  MEDIUM: " + dataOra.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
-        System.out.println("  SHORT: " + dataOra.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)));
+        System.out.println("  FULL: " + dataOra.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
+        System.out.println("  LONG: " + dataOra.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)));
+        System.out.println("  MEDIUM: " + dataOra.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
+        System.out.println("  SHORT: " + dataOra.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
 
         // Formatter personalizzati
         System.out.println("\nFormati personalizzati:");
