@@ -1,4 +1,4 @@
-package com.corso.samples.datatypes;
+package com.corso.samples.javabase;
 
 import java.util.*;
 
