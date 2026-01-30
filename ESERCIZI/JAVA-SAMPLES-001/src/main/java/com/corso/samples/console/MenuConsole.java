@@ -1,12 +1,16 @@
 package com.corso.samples.console;
 
-import com.corso.samples.datatypes.*;
+import java.util.Scanner;
+
+import com.corso.samples.datatypes.BigDecimalDemo;
+import com.corso.samples.datatypes.DateDemo;
+import com.corso.samples.datatypes.LiteralDemo;
+import com.corso.samples.datatypes.OperatoriDemo;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
 import com.corso.samples.oop.ClassiDemo;
+import com.corso.samples.oop.GenericsDemo;
 import com.corso.samples.oop.MetodiProprietaDemo;
-
-import java.util.Scanner;
 
 public class MenuConsole  {
 
@@ -56,6 +60,7 @@ public class MenuConsole  {
         System.out.println("6. Condizioni Demo");
         System.out.println("7. Classi Demo");
         System.out.println("8. Classi - Proprietà/Metodi Demo");
+        System.out.println("9. Generics Demo");
         System.out.println("");
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -101,6 +106,9 @@ public class MenuConsole  {
                 break;
             case 8:
                 MetodiProprietaDemo.sample();
+                break;
+            case 9:
+                GenericsDemo.sample();
                 break;
             case 0:
                 return false;
