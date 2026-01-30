@@ -4,6 +4,7 @@ import com.corso.samples.datatypes.*;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
 import com.corso.samples.oop.ClassiDemo;
+import com.corso.samples.oop.MetodiProprietaDemo;
 
 import java.util.Scanner;
 
@@ -54,6 +55,7 @@ public class MenuConsole  {
         System.out.println("5. Cicli Demo");
         System.out.println("6. Condizioni Demo");
         System.out.println("7. Classi Demo");
+        System.out.println("8. Classi - Proprietà/Metodi Demo");
         System.out.println("");
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -97,7 +99,9 @@ public class MenuConsole  {
             case 7:
                 ClassiDemo.sample();
                 break;
-
+            case 8:
+                MetodiProprietaDemo.sample();
+                break;
             case 0:
                 return false;
             default:
