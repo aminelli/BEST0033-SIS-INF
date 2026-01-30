@@ -1,7 +1,14 @@
 package com.corso.samples.oop;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -890,8 +897,8 @@ public class GenericsDemo {
         // }
 
         // 6. Non si possono fare cast a tipi parametrizzati (unchecked warning)
-        @SuppressWarnings("unchecked")
-        List<String> list = (List<String>) new ArrayList<>(); // Warning
+        // @SuppressWarnings("unchecked")
+        // List<String> list = (List<String>) new ArrayList<>(); // Warning
 
         // 7. Non si possono creare eccezioni generiche
         // class GenericException<T> extends Exception { } // ERRORE
