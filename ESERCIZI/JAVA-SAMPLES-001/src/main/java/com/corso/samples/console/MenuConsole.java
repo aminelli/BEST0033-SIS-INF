@@ -9,10 +9,13 @@ import com.corso.samples.datatypes.OperatoriDemo;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
 import com.corso.samples.oop.ClassiDemo;
+import com.corso.samples.oop.CovariantReturnDemo;
 import com.corso.samples.oop.GenericsDemo;
+import com.corso.samples.oop.InterfacceFunzionaliDemo;
 import com.corso.samples.oop.MetodiProprietaDemo;
+import com.corso.samples.oop.OverloadOverrideDemo;
 
-public class MenuConsole  {
+public class MenuConsole {
 
     private final Scanner scanner;
 
@@ -20,19 +23,17 @@ public class MenuConsole  {
     public MenuConsole() {
         scanner = new Scanner(System.in);
 
-
         /*
-        Scanner sc1 = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
-        Scanner sc3 = sc2;
-        sc1 = null;
-        System.gc();
-        sc2 = null;
-        Runtime.getRuntime().gc();
-        sc3.close();
-        */
+         * Scanner sc1 = new Scanner(System.in);
+         * Scanner sc2 = new Scanner(System.in);
+         * Scanner sc3 = sc2;
+         * sc1 = null;
+         * System.gc();
+         * sc2 = null;
+         * Runtime.getRuntime().gc();
+         * sc3.close();
+         */
     }
-
 
     public void showMenu() {
         boolean displayMenu = true;
@@ -47,21 +48,24 @@ public class MenuConsole  {
         scanner.close();
     }
 
-
     private void drawMenu() {
         System.out.println("\n".repeat(10) + "=".repeat(60));
         System.out.println("MENU PRINCIPALE");
         System.out.println("=".repeat(60));
-        System.out.println("1. BigDecimal Demo");
-        System.out.println("2. Date Demo");
-        System.out.println("3. Operatori Demo");
-        System.out.println("4. Literal Demo");
-        System.out.println("5. Cicli Demo");
-        System.out.println("6. Condizioni Demo");
-        System.out.println("7. Classi Demo");
-        System.out.println("8. Classi - Proprietà/Metodi Demo");
-        System.out.println("9. Generics Demo");
-        System.out.println("");
+        System.out.println("1.  BigDecimal Demo");
+        System.out.println("2.  Date Demo");
+        System.out.println("3.  Operatori Demo");
+        System.out.println("4.  Literal Demo");
+        System.out.println("5.  Cicli Demo");
+        System.out.println("6.  Condizioni Demo");
+        System.out.println("-".repeat(60));
+        System.out.println("7.  Classi Demo");
+        System.out.println("8.  Classi - Proprietà/Metodi Demo");
+        System.out.println("9.  Generics Demo");
+        System.out.println("10. Interfacce Funzionali Demo");
+        System.out.println("11. Classi - Overload/Override Demo");
+        System.out.println("12. Covariant Return Demo");
+        System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
         System.out.println("");
@@ -109,6 +113,15 @@ public class MenuConsole  {
                 break;
             case 9:
                 GenericsDemo.sample();
+                break;
+            case 10:
+                InterfacceFunzionaliDemo.sample();
+                break;
+            case 11:
+                OverloadOverrideDemo.sample();
+                break;
+            case 12:
+                CovariantReturnDemo.sample();
                 break;
             case 0:
                 return false;
