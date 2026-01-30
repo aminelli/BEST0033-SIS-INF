@@ -2,7 +2,9 @@ package com.corso.samples.console;
 
 import java.util.Scanner;
 
+import com.corso.samples.datatypes.ArrayDemo;
 import com.corso.samples.datatypes.BigDecimalDemo;
+import com.corso.samples.datatypes.CollectionDemo;
 import com.corso.samples.datatypes.DateDemo;
 import com.corso.samples.datatypes.LiteralDemo;
 import com.corso.samples.datatypes.OperatoriDemo;
@@ -66,6 +68,9 @@ public class MenuConsole {
         System.out.println("11. Classi - Overload/Override Demo");
         System.out.println("12. Covariant Return Demo");
         System.out.println("-".repeat(60));
+        System.out.println("13. Array Demo");
+        System.out.println("14. Collceyion Demo");
+        System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
         System.out.println("");
@@ -122,6 +127,12 @@ public class MenuConsole {
                 break;
             case 12:
                 CovariantReturnDemo.sample();
+                break;
+             case 13:
+                ArrayDemo.sample();
+                break;
+             case 14:
+                CollectionDemo.sample();
                 break;
             case 0:
                 return false;

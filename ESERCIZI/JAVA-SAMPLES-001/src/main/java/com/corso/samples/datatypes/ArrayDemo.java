@@ -270,7 +270,7 @@ public class ArrayDemo {
     /**
      * Esempio di utilizzo
      */
-    public static void main(String[] args) {
+    public static void sample() {
         ArrayDemo demo = new ArrayDemo();
         
         demo.dichiarazioneArray();
