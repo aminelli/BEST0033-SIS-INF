@@ -7,7 +7,7 @@ import com.corso.samples.console.MenuConsole;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
          new MenuConsole().showMenu();
 

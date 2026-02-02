@@ -2,14 +2,18 @@ package com.corso.samples.console;
 
 import java.util.Scanner;
 
+import com.corso.samples.datatypes.AlgoritmiOrdinamentoDemo;
 import com.corso.samples.datatypes.ArrayDemo;
 import com.corso.samples.datatypes.BigDecimalDemo;
 import com.corso.samples.datatypes.CollectionDemo;
+import com.corso.samples.datatypes.CollectionsArraysDemo;
 import com.corso.samples.datatypes.DateDemo;
 import com.corso.samples.datatypes.LiteralDemo;
 import com.corso.samples.datatypes.OperatoriDemo;
+import com.corso.samples.datatypes.StreamsDemo;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
+import com.corso.samples.oop.AnnotationsDemo;
 import com.corso.samples.oop.ClassiDemo;
 import com.corso.samples.oop.CovariantReturnDemo;
 import com.corso.samples.oop.GenericsDemo;
@@ -37,7 +41,7 @@ public class MenuConsole {
          */
     }
 
-    public void showMenu() {
+    public void showMenu() throws Exception {
         boolean displayMenu = true;
 
         while (displayMenu) {
@@ -69,7 +73,12 @@ public class MenuConsole {
         System.out.println("12. Covariant Return Demo");
         System.out.println("-".repeat(60));
         System.out.println("13. Array Demo");
-        System.out.println("14. Collceyion Demo");
+        System.out.println("14. Collection Demo");
+        System.out.println("15. Collection - Streams Demo");
+        System.out.println("16. Collection - Java.util.Collections e java.util.Arrays Demo");
+        System.out.println("17. Algoritmi Ordinamento Demo");
+        System.out.println("-".repeat(60));
+        System.out.println("18. Annotations Demo");
         System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -89,7 +98,7 @@ public class MenuConsole {
 
     }
 
-    private boolean executeAction(int menuIndex) {
+    private boolean executeAction(int menuIndex) throws Exception {
 
         switch (menuIndex) {
             case 1:
@@ -128,12 +137,24 @@ public class MenuConsole {
             case 12:
                 CovariantReturnDemo.sample();
                 break;
-             case 13:
+            case 13:
                 ArrayDemo.sample();
                 break;
-             case 14:
+            case 14:
                 CollectionDemo.sample();
                 break;
+            case 15:
+                StreamsDemo.sample();
+                break;
+           case 16:
+                CollectionsArraysDemo.sample();
+                break;                
+           case 17:
+                AlgoritmiOrdinamentoDemo.sample();
+                break;                
+           case 18:
+                AnnotationsDemo.sample();
+                break;                
             case 0:
                 return false;
             default:
