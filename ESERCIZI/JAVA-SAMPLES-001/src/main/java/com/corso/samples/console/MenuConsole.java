@@ -11,6 +11,7 @@ import com.corso.samples.datatypes.DateDemo;
 import com.corso.samples.datatypes.LiteralDemo;
 import com.corso.samples.datatypes.OperatoriDemo;
 import com.corso.samples.datatypes.StreamsDemo;
+import com.corso.samples.javaadv.LambdaFunctionDemo;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
 import com.corso.samples.oop.AnnotationsDemo;
@@ -79,6 +80,7 @@ public class MenuConsole {
         System.out.println("17. Algoritmi Ordinamento Demo");
         System.out.println("-".repeat(60));
         System.out.println("18. Annotations Demo");
+        System.out.println("19. Lambda Function Demo");
         System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -155,6 +157,11 @@ public class MenuConsole {
            case 18:
                 AnnotationsDemo.sample();
                 break;                
+            case 19:
+                LambdaFunctionDemo.sample();
+                break;                
+
+                
             case 0:
                 return false;
             default:

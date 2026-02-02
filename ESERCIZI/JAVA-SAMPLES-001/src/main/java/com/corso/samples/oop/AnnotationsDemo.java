@@ -14,16 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Esempio completo e avanzato sull'uso delle Annotations in Java
- * Include:
- * - Creazione di annotations custom
- * - Diversi tipi di annotations (marker, single-value, multi-value)
- * - Retention policies (SOURCE, CLASS, RUNTIME)
- * - Target types
- * - Annotation processing con reflection
- * - Esempi pratici avanzati
- */
 public class AnnotationsDemo {
 
     public static void sample() throws Exception {
@@ -295,8 +285,8 @@ public class AnnotationsDemo {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     @Secured(roles = {"ADMIN"}, permissions = {Permission.WRITE})
-    //@Loggable(level = LogLevel.INFO, logExecutionTime = true)
-    //@Transactional
+    @Loggable(level = LogLevel.INFO, logExecutionTime = true)
+    @Transactional
     @interface AdminOperation {
         String description() default "";
     }
