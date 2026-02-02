@@ -285,8 +285,8 @@ public class AnnotationsDemo {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     @Secured(roles = {"ADMIN"}, permissions = {Permission.WRITE})
-    @Loggable(level = LogLevel.INFO, logExecutionTime = true)
-    @Transactional
+    //@Loggable(level = LogLevel.INFO, logExecutionTime = true)
+    //@Transactional
     @interface AdminOperation {
         String description() default "";
     }

@@ -11,7 +11,12 @@ import com.corso.samples.datatypes.DateDemo;
 import com.corso.samples.datatypes.LiteralDemo;
 import com.corso.samples.datatypes.OperatoriDemo;
 import com.corso.samples.datatypes.StreamsDemo;
+import com.corso.samples.javaadv.EccezioniDemo;
+import com.corso.samples.javaadv.InputOutputDemo;
 import com.corso.samples.javaadv.LambdaFunctionDemo;
+import com.corso.samples.javaadv.ReflectionDemo;
+import com.corso.samples.javaadv.SerializationDemo;
+import com.corso.samples.javaadv.ThreadDemo;
 import com.corso.samples.javabase.CicliDemo;
 import com.corso.samples.javabase.CondizioniDemo;
 import com.corso.samples.oop.AnnotationsDemo;
@@ -80,7 +85,12 @@ public class MenuConsole {
         System.out.println("17. Algoritmi Ordinamento Demo");
         System.out.println("-".repeat(60));
         System.out.println("18. Annotations Demo");
-        System.out.println("19. Lambda Function Demo");
+        System.out.println("19. Reflection Demo");
+        System.out.println("20. Lambda Function Demo");
+        System.out.println("21. Eccezioni e Throws Demo");
+        System.out.println("22. Serialization Demo");
+        System.out.println("23. Input/Output Demo");
+        System.out.println("24. Thread Demo");
         System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -148,20 +158,34 @@ public class MenuConsole {
             case 15:
                 StreamsDemo.sample();
                 break;
-           case 16:
+            case 16:
                 CollectionsArraysDemo.sample();
-                break;                
-           case 17:
+                break;
+            case 17:
                 AlgoritmiOrdinamentoDemo.sample();
-                break;                
-           case 18:
+                break;
+            case 18:
                 AnnotationsDemo.sample();
-                break;                
+                break;
             case 19:
+                ReflectionDemo.sample();
+                break;
+            case 20:
                 LambdaFunctionDemo.sample();
-                break;                
+                break;
+            case 21:
+                EccezioniDemo.sample();
+                break;
+            case 22:
+                SerializationDemo.sample();
+                break;
+            case 23:
+                InputOutputDemo.sample();
+                break;
+            case 24:
+                ThreadDemo.sample();
+                break;
 
-                
             case 0:
                 return false;
             default:

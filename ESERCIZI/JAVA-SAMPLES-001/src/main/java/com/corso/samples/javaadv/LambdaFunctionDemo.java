@@ -1,14 +1,32 @@
 package com.corso.samples.javaadv;
 
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Esempio completo e avanzato sulle Lambda Function in Java
  * Include:
  * - Sintassi lambda base e avanzata
- * - Functional Interfaces predefiniti (Function, Predicate, Consumer, Supplier, etc.)
+ * - Functional Interfaces predefiniti (Function, Predicate, Consumer, Supplier,
+ * etc.)
  * - Method References (static, instance, constructor)
  * - Lambda con Stream API
  * - Composizione di lambda
@@ -22,14 +40,14 @@ public class LambdaFunctionDemo {
 
     public static void sample() {
         LambdaFunctionDemo demo = new LambdaFunctionDemo();
-        
+
         System.out.println("=== LAMBDA FUNCTION IN JAVA - GUIDA COMPLETA ===\n");
-        
+
         // Basi
         demo.sintassiBase();
         demo.functionalInterfacesPredefiniti();
         demo.methodReferences();
-        
+
         // Functional Interfaces specifici
         demo.predicateExamples();
         demo.functionExamples();
@@ -37,7 +55,7 @@ public class LambdaFunctionDemo {
         demo.supplierExamples();
         demo.operatorExamples();
         demo.biInterfacesExamples();
-        
+
         // Avanzati
         demo.composizioneLambda();
         demo.lambdaConClosure();
@@ -131,8 +149,8 @@ public class LambdaFunctionDemo {
 
         // BiPredicate<T, U> - prende T e U, ritorna boolean
         BiPredicate<String, String> startsWith = String::startsWith;
-        System.out.println("BiPredicate: 'Hello'.startsWith('He') = " + 
-            startsWith.test("Hello", "He"));
+        System.out.println("BiPredicate: 'Hello'.startsWith('He') = " +
+                startsWith.test("Hello", "He"));
 
         // BiConsumer<T, U> - prende T e U, non ritorna nulla
         BiConsumer<String, Integer> printTimes = (s, n) -> {
@@ -197,18 +215,18 @@ public class LambdaFunctionDemo {
 
         // and - combina con AND logico
         Predicate<Integer> evenAndGreaterThan5 = isEven.and(greaterThan5);
-        System.out.println("Pari e > 5: " + 
-            numeri.stream().filter(evenAndGreaterThan5).collect(Collectors.toList()));
+        System.out.println("Pari e > 5: " +
+                numeri.stream().filter(evenAndGreaterThan5).collect(Collectors.toList()));
 
         // or - combina con OR logico
         Predicate<Integer> evenOrGreaterThan5 = isEven.or(greaterThan5);
-        System.out.println("Pari o > 5: " + 
-            numeri.stream().filter(evenOrGreaterThan5).collect(Collectors.toList()));
+        System.out.println("Pari o > 5: " +
+                numeri.stream().filter(evenOrGreaterThan5).collect(Collectors.toList()));
 
         // negate - nega il predicato
         Predicate<Integer> isOdd = isEven.negate();
-        System.out.println("Dispari: " + 
-            numeri.stream().filter(isOdd).collect(Collectors.toList()));
+        System.out.println("Dispari: " +
+                numeri.stream().filter(isOdd).collect(Collectors.toList()));
 
         // isEqual - predicato di uguaglianza
         Predicate<Integer> isFive = Predicate.isEqual(5);
@@ -216,8 +234,8 @@ public class LambdaFunctionDemo {
 
         // not - metodo statico per negare (Java 11+)
         Predicate<Integer> notEven = Predicate.not(isEven);
-        System.out.println("Non pari (Predicate.not): " + 
-            numeri.stream().filter(notEven).collect(Collectors.toList()));
+        System.out.println("Non pari (Predicate.not): " +
+                numeri.stream().filter(notEven).collect(Collectors.toList()));
 
         // Predicati complessi
         Predicate<String> isEmpty = String::isEmpty;
@@ -225,14 +243,14 @@ public class LambdaFunctionDemo {
         Predicate<String> startsWithA = s -> s.startsWith("A");
 
         Predicate<String> complexPredicate = isEmpty.negate()
-            .and(isLong)
-            .and(startsWithA);
+                .and(isLong)
+                .and(startsWithA);
 
         List<String> parole = Arrays.asList("Apple", "Apricot", "Banana", "A", "");
         System.out.println("Parole non vuote, lunghe > 5, che iniziano con A:");
         System.out.println("  " + parole.stream()
-            .filter(complexPredicate)
-            .collect(Collectors.toList()));
+                .filter(complexPredicate)
+                .collect(Collectors.toList()));
 
         System.out.println();
     }
@@ -261,8 +279,8 @@ public class LambdaFunctionDemo {
         Function<String, Integer> length = String::length;
 
         Function<String, Integer> processString = removeSpaces
-            .andThen(toUpper)
-            .andThen(length);
+                .andThen(toUpper)
+                .andThen(length);
 
         System.out.println("Process 'Hello World': " + processString.apply("Hello World"));
 
@@ -349,11 +367,11 @@ public class LambdaFunctionDemo {
         System.out.println("Optional orElseGet: " + empty.orElseGet(defaultValue));
 
         // Supplier per generazione valori
-        Supplier<Integer> randomIntSupplier = () -> (int)(Math.random() * 100);
+        Supplier<Integer> randomIntSupplier = () -> (int) (Math.random() * 100);
         System.out.println("5 numeri random:");
         Stream.generate(randomIntSupplier)
-            .limit(5)
-            .forEach(n -> System.out.print("  " + n));
+                .limit(5)
+                .forEach(n -> System.out.print("  " + n));
         System.out.println();
 
         // Supplier per UUID
@@ -376,7 +394,9 @@ public class LambdaFunctionDemo {
         System.out.println("UnaryOperator square(5): " + square.apply(5));
 
         // Composizione di UnaryOperator
-        UnaryOperator<Integer> incrementThenSquare = increment.andThen(square);
+        // UnaryOperator<Integer> incrementThenSquare = increment.andThen(square);
+        UnaryOperator<Integer> incrementThenSquare = x -> square.apply(increment.apply(x));
+
         System.out.println("increment then square(5): " + incrementThenSquare.apply(5)); // 36
 
         // BinaryOperator<T> extends BiFunction<T, T, T>
@@ -386,8 +406,8 @@ public class LambdaFunctionDemo {
 
         System.out.println("\nBinaryOperator sum(5, 3): " + sum.apply(5, 3));
         System.out.println("BinaryOperator multiply(5, 3): " + multiply.apply(5, 3));
-        System.out.println("BinaryOperator concat('Hello', 'World'): " + 
-            concat.apply("Hello", "World"));
+        System.out.println("BinaryOperator concat('Hello', 'World'): " +
+                concat.apply("Hello", "World"));
 
         // BinaryOperator.maxBy e minBy
         BinaryOperator<Integer> max = BinaryOperator.maxBy(Integer::compareTo);
@@ -422,17 +442,16 @@ public class LambdaFunctionDemo {
 
         // BiFunction<T, U, R>
         BiFunction<String, Integer, String> substring = String::substring;
-        System.out.println("BiFunction substring('Hello', 1): " + 
-            substring.apply("Hello", 1));
+        System.out.println("BiFunction substring('Hello', 1): " +
+                substring.apply("Hello", 1));
 
-        BiFunction<Integer, Integer, Integer> power = (base, exp) -> 
-            (int) Math.pow(base, exp);
+        BiFunction<Integer, Integer, Integer> power = (base, exp) -> (int) Math.pow(base, exp);
         System.out.println("BiFunction power(2, 3): " + power.apply(2, 3));
 
         // BiPredicate<T, U>
         BiPredicate<String, Integer> longerThan = (s, len) -> s.length() > len;
-        System.out.println("\nBiPredicate 'Hello' longer than 3: " + 
-            longerThan.test("Hello", 3));
+        System.out.println("\nBiPredicate 'Hello' longer than 3: " +
+                longerThan.test("Hello", 3));
 
         BiPredicate<Integer, Integer> isGreater = (a, b) -> a > b;
         System.out.println("BiPredicate 5 > 3: " + isGreater.test(5, 3));
@@ -457,10 +476,10 @@ public class LambdaFunctionDemo {
         map.forEach((k, v) -> System.out.println("  " + k + " = " + v));
 
         // BiConsumer andThen
-        BiConsumer<String, Integer> logger = (k, v) -> 
-            System.out.println("  Logging: " + k + " -> " + v);
+        BiConsumer<String, Integer> logger = (k, v) -> System.out.println("  Logging: " + k + " -> " + v);
         BiConsumer<String, Integer> validator = (k, v) -> {
-            if (v < 0) System.out.println("  Warning: negative value for " + k);
+            if (v < 0)
+                System.out.println("  Warning: negative value for " + k);
         };
 
         BiConsumer<String, Integer> combined = logger.andThen(validator);
@@ -480,8 +499,8 @@ public class LambdaFunctionDemo {
         Function<String, String> addPrefix = s -> "*** " + s + " ***";
 
         Function<String, String> process = trim
-            .andThen(toUpper)
-            .andThen(addPrefix);
+                .andThen(toUpper)
+                .andThen(addPrefix);
 
         System.out.println("Composizione Function:");
         System.out.println(process.apply("  hello world  "));
@@ -492,8 +511,8 @@ public class LambdaFunctionDemo {
         Predicate<Integer> lessThan100 = n -> n < 100;
 
         Predicate<Integer> complexPredicate = isPositive
-            .and(isEven)
-            .and(lessThan100);
+                .and(isEven)
+                .and(lessThan100);
 
         System.out.println("\nComposizione Predicate:");
         System.out.println("Test 50: " + complexPredicate.test(50));
@@ -506,8 +525,8 @@ public class LambdaFunctionDemo {
         Consumer<String> logUpper = s -> System.out.println("  Upper: " + s.toUpperCase());
 
         Consumer<String> fullProcessor = print
-            .andThen(logLength)
-            .andThen(logUpper);
+                .andThen(logLength)
+                .andThen(logUpper);
 
         System.out.println("\nComposizione Consumer:");
         fullProcessor.accept("Hello");
@@ -542,8 +561,7 @@ public class LambdaFunctionDemo {
         System.out.println("Closure con int: " + multiply.apply(5));
 
         // Closure per creare factory
-        Function<Integer, Function<Integer, Integer>> multiplierFactory = factor -> 
-            number -> number * factor;
+        Function<Integer, Function<Integer, Integer>> multiplierFactory = factor -> number -> number * factor;
 
         Function<Integer, Integer> times5 = multiplierFactory.apply(5);
         Function<Integer, Integer> times10 = multiplierFactory.apply(10);
@@ -565,7 +583,7 @@ public class LambdaFunctionDemo {
         System.out.println("Log contents: " + log);
 
         // Closure per contatori
-        int[] counter = {0}; // array per mutabilità
+        int[] counter = { 0 }; // array per mutabilità
         Runnable incrementer = () -> counter[0]++;
 
         System.out.println("\nClosure con contatore:");
@@ -588,12 +606,12 @@ public class LambdaFunctionDemo {
     @FunctionalInterface
     interface Validator<T> {
         boolean validate(T value);
-        
+
         // Metodi default sono permessi
         default Validator<T> and(Validator<T> other) {
             return value -> this.validate(value) && other.validate(value);
         }
-        
+
         default Validator<T> or(Validator<T> other) {
             return value -> this.validate(value) || other.validate(value);
         }
@@ -607,7 +625,7 @@ public class LambdaFunctionDemo {
     @FunctionalInterface
     interface Factory<T> {
         T create();
-        
+
         static <T> Factory<T> of(Supplier<T> supplier) {
             return supplier::get;
         }
@@ -619,7 +637,7 @@ public class LambdaFunctionDemo {
         // Calculator
         Calculator add = (a, b) -> a + b;
         Calculator multiply = (a, b) -> a * b;
-        
+
         System.out.println("Calculator add(5, 3): " + add.calculate(5, 3));
         System.out.println("Calculator multiply(5, 3): " + multiply.calculate(5, 3));
 
@@ -635,9 +653,8 @@ public class LambdaFunctionDemo {
         System.out.println("Validator 'Banana': " + complexValidator.validate("Banana"));
 
         // TriFunction
-        TriFunction<Integer, Integer, Integer, Integer> sumThree = 
-            (a, b, c) -> a + b + c;
-        
+        TriFunction<Integer, Integer, Integer, Integer> sumThree = (a, b, c) -> a + b + c;
+
         System.out.println("\nTriFunction sum(1, 2, 3): " + sumThree.apply(1, 2, 3));
 
         // Factory
@@ -660,43 +677,41 @@ public class LambdaFunctionDemo {
         System.out.println("=== LAMBDA CON STREAM ===");
 
         List<Persona> persone = Arrays.asList(
-            new Persona("Mario", 35, 45000),
-            new Persona("Luigi", 28, 38000),
-            new Persona("Peach", 32, 52000),
-            new Persona("Bowser", 45, 60000),
-            new Persona("Yoshi", 25, 32000)
-        );
+                new Persona("Mario", 35, 45000),
+                new Persona("Luigi", 28, 38000),
+                new Persona("Peach", 32, 52000),
+                new Persona("Bowser", 45, 60000),
+                new Persona("Yoshi", 25, 32000));
 
         // filter con lambda
         System.out.println("Persone con età > 30:");
         persone.stream()
-            .filter(p -> p.getEta() > 30)
-            .forEach(p -> System.out.println("  " + p));
+                .filter(p -> p.getEta() > 30)
+                .forEach(p -> System.out.println("  " + p));
 
         // map con lambda
         System.out.println("\nNomi in maiuscolo:");
         persone.stream()
-            .map(p -> p.getNome().toUpperCase())
-            .forEach(nome -> System.out.println("  " + nome));
+                .map(p -> p.getNome().toUpperCase())
+                .forEach(nome -> System.out.println("  " + nome));
 
         // sorted con lambda
         System.out.println("\nOrdinati per stipendio (desc):");
         persone.stream()
-            .sorted((p1, p2) -> Double.compare(p2.getStipendio(), p1.getStipendio()))
-            .forEach(p -> System.out.println("  " + p));
+                .sorted((p1, p2) -> Double.compare(p2.getStipendio(), p1.getStipendio()))
+                .forEach(p -> System.out.println("  " + p));
 
         // reduce con lambda
         double totaleStipendi = persone.stream()
-            .map(Persona::getStipendio)
-            .reduce(0.0, (a, b) -> a + b);
+                .map(Persona::getStipendio)
+                .reduce(0.0, (a, b) -> a + b);
         System.out.println("\nTotale stipendi: €" + totaleStipendi);
 
         // collect con lambda complessa
         Map<String, Double> stipendiPerFasciaEta = persone.stream()
-            .collect(Collectors.groupingBy(
-                p -> p.getEta() < 30 ? "Giovani" : p.getEta() < 40 ? "Adulti" : "Senior",
-                Collectors.averagingDouble(Persona::getStipendio)
-            ));
+                .collect(Collectors.groupingBy(
+                        p -> p.getEta() < 30 ? "Giovani" : p.getEta() < 40 ? "Adulti" : "Senior",
+                        Collectors.averagingDouble(Persona::getStipendio)));
         System.out.println("\nMedia stipendi per fascia età: " + stipendiPerFasciaEta);
 
         // anyMatch, allMatch, noneMatch
@@ -720,19 +735,19 @@ public class LambdaFunctionDemo {
 
         // Static method reference
         parole.stream()
-            .map(String::toUpperCase)
-            .forEach(System.out::println);
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
 
         // Instance method reference su tipo
         System.out.println("\nLunghezze:");
         parole.stream()
-            .map(String::length)
-            .forEach(System.out::println);
+                .map(String::length)
+                .forEach(System.out::println);
 
         // Constructor reference
         List<Integer> lunghezze = parole.stream()
-            .map(String::length)
-            .collect(Collectors.toCollection(ArrayList::new));
+                .map(String::length)
+                .collect(Collectors.toCollection(ArrayList::new));
         System.out.println("Collection con constructor ref: " + lunghezze);
 
         // Array constructor reference
@@ -756,7 +771,7 @@ public class LambdaFunctionDemo {
         // Constructor reference per oggetti
         Supplier<Persona> personaSupplier = () -> new Persona("Default", 0, 0);
         Function<String, Persona> personaFactory = nome -> new Persona(nome, 0, 0);
-        
+
         Persona p1 = personaSupplier.get();
         Persona p2 = personaFactory.apply("Mario");
         System.out.println("\nConstructor ref: " + p1 + ", " + p2);
@@ -803,8 +818,7 @@ public class LambdaFunctionDemo {
         System.out.println("=== CURRYING E PARTIAL APPLICATION ===");
 
         // Currying: trasforma f(a, b, c) in f(a)(b)(c)
-        Function<Integer, Function<Integer, Function<Integer, Integer>>> curriedSum =
-            a -> b -> c -> a + b + c;
+        Function<Integer, Function<Integer, Function<Integer, Integer>>> curriedSum = a -> b -> c -> a + b + c;
 
         // Applicazione parziale
         Function<Integer, Function<Integer, Integer>> addTo5 = curriedSum.apply(5);
@@ -818,20 +832,18 @@ public class LambdaFunctionDemo {
         System.out.println("add5(10): " + add5.apply(10));
 
         // Currying per configurazione
-        Function<String, Function<String, Function<String, String>>> formatter =
-            prefix -> suffix -> content -> prefix + content + suffix;
+        Function<String, Function<String, Function<String, String>>> formatter = prefix -> suffix -> content -> prefix
+                + content + suffix;
 
-        Function<String, Function<String, String>> htmlFormatter = 
-            formatter.apply("<html>");
-        Function<String, String> htmlBodyFormatter = 
-            htmlFormatter.apply("</html>");
+        Function<String, Function<String, String>> htmlFormatter = formatter.apply("<html>");
+        Function<String, String> htmlBodyFormatter = htmlFormatter.apply("</html>");
 
         System.out.println("\nHTML formatter:");
         System.out.println(htmlBodyFormatter.apply("<body>Content</body>"));
 
         // Currying per validazione
-        Function<Integer, Function<Integer, Predicate<Integer>>> rangeValidator =
-            min -> max -> value -> value >= min && value <= max;
+        Function<Integer, Function<Integer, Predicate<Integer>>> rangeValidator = min -> max -> value -> value >= min
+                && value <= max;
 
         Predicate<Integer> ageValidator = rangeValidator.apply(18).apply(65);
         System.out.println("\nAge validator (18-65):");
@@ -856,8 +868,7 @@ public class LambdaFunctionDemo {
         System.out.println("=== HIGHER-ORDER FUNCTIONS ===");
 
         // Funzione che ritorna funzione
-        Function<String, Function<String, String>> createGreeter = greeting ->
-            name -> greeting + ", " + name + "!";
+        Function<String, Function<String, String>> createGreeter = greeting -> name -> greeting + ", " + name + "!";
 
         Function<String, String> helloGreeter = createGreeter.apply("Hello");
         Function<String, String> hiGreeter = createGreeter.apply("Hi");
@@ -867,59 +878,58 @@ public class LambdaFunctionDemo {
         System.out.println(hiGreeter.apply("Luigi"));
 
         // Funzione che prende funzione come parametro
-        Function<Integer, Integer> applyTwice(Function<Integer, Integer> f) {
-            return x -> f.apply(f.apply(x));
-        }
+        Function<Function<Integer, Integer>, Function<Integer, Integer>> applyTwice = f -> x -> f.apply(f.apply(x));
 
         Function<Integer, Integer> increment = x -> x + 1;
         Function<Integer, Integer> double_ = x -> x * 2;
 
-        System.out.println("\napplyTwice increment(5): " + applyTwice(increment).apply(5));
-        System.out.println("applyTwice double(5): " + applyTwice(double_).apply(5));
+        System.out.println("\napplyTwice increment(5): " + applyTwice.apply(increment).apply(5));
+        System.out.println("applyTwice double(5): " + applyTwice.apply(double_).apply(5));
 
-        // Compose generico
-        <T> Function<T, T> composeAll(Function<T, T>... functions) {
-            return x -> {
-                T result = x;
-                for (Function<T, T> f : functions) {
-                    result = f.apply(result);
-                }
-                return result;
-            };
-        }
+        // Compose generico - definito come variabile Function
+        Function<Function<Integer, Integer>[], Function<Integer, Integer>> composeAll = functions -> x -> {
+            Integer result = x;
+            for (Function<Integer, Integer> f : functions) {
+                result = f.apply(result);
+            }
+            return result;
+        };
 
-        Function<Integer, Integer> pipeline = composeAll(
-            x -> x + 1,
-            x -> x * 2,
-            x -> x - 3
-        );
+        @SuppressWarnings("unchecked")
+        Function<Integer, Integer> pipeline = composeAll.apply(new Function[] {
+                (Function<Integer, Integer>) (x -> x + 1),
+                (Function<Integer, Integer>) (x -> x * 2),
+                (Function<Integer, Integer>) (x -> x - 3)
+        });
 
         System.out.println("\nComposed pipeline (5): " + pipeline.apply(5));
 
-        // Filter generico
-        <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
-            return list.stream()
+        // Filter generico - definito come variabile BiFunction
+        BiFunction<List<Integer>, Predicate<Integer>, List<Integer>> filterList = (list, predicate) -> list.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
-        }
 
         List<Integer> numeri = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        List<Integer> pari = filterList(numeri, n -> n % 2 == 0);
-        List<Integer> maggioriDi5 = filterList(numeri, n -> n > 5);
+        List<Integer> pari = filterList.apply(numeri, n -> n % 2 == 0);
+        List<Integer> maggioriDi5 = filterList.apply(numeri, n -> n > 5);
 
         System.out.println("\nFilter generico:");
         System.out.println("Pari: " + pari);
         System.out.println("Maggiori di 5: " + maggioriDi5);
 
-        // Map generico
-        <T, R> List<R> mapList(List<T> list, Function<T, R> mapper) {
-            return list.stream()
+        // Map generico - definito come variabile BiFunction
+        BiFunction<List<Integer>, Function<Integer, String>, List<String>> mapListToString = (list, mapper) -> list
+                .stream()
                 .map(mapper)
                 .collect(Collectors.toList());
-        }
 
-        List<String> stringhe = mapList(numeri, Object::toString);
-        List<Integer> quadrati = mapList(numeri, x -> x * x);
+        BiFunction<List<Integer>, Function<Integer, Integer>, List<Integer>> mapListToInt = (list, mapper) -> list
+                .stream()
+                .map(mapper)
+                .collect(Collectors.toList());
+
+        List<String> stringhe = mapListToString.apply(numeri, Object::toString);
+        List<Integer> quadrati = mapListToInt.apply(numeri, x -> x * x);
 
         System.out.println("\nMap generico:");
         System.out.println("To String: " + stringhe);
@@ -934,17 +944,15 @@ public class LambdaFunctionDemo {
         System.out.println("=== CASI D'USO REALI ===");
 
         // 1. Validazione input
-        Validator<String> emailValidator = email ->
-            email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+        Validator<String> emailValidator = email -> email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
 
-        Validator<String> passwordValidator = pwd ->
-            pwd != null && pwd.length() >= 8 && pwd.matches(".*[0-9].*");
+        Validator<String> passwordValidator = pwd -> pwd != null && pwd.length() >= 8 && pwd.matches(".*[0-9].*");
 
         System.out.println("Validazione:");
-        System.out.println("Email 'test@example.com': " + 
-            emailValidator.validate("test@example.com"));
-        System.out.println("Password 'password123': " + 
-            passwordValidator.validate("password123"));
+        System.out.println("Email 'test@example.com': " +
+                emailValidator.validate("test@example.com"));
+        System.out.println("Password 'password123': " +
+                passwordValidator.validate("password123"));
 
         // 2. Strategy pattern con lambda
         Map<String, Function<Double, Double>> taxStrategies = new HashMap<>();
@@ -957,9 +965,9 @@ public class LambdaFunctionDemo {
 
         // 3. Builder pattern con lambda
         Consumer<PersonBuilder> builderConfig = builder -> builder
-            .setNome("Mario")
-            .setEta(35)
-            .setStipendio(45000);
+                .setNome("Mario")
+                .setEta(35)
+                .setStipendio(45000);
 
         PersonBuilder builder = new PersonBuilder();
         builderConfig.accept(builder);
@@ -982,30 +990,43 @@ public class LambdaFunctionDemo {
         ExpensiveObject obj = lazyObject.get();
 
         // 6. Memoization
+
         Map<Integer, Integer> cache = new HashMap<>();
-        Function<Integer, Integer> fibonacci = n -> {
+
+        Function<Integer, Integer>[] fibonacci = new Function[1];
+        fibonacci[0] = n -> {
             if (cache.containsKey(n)) {
                 return cache.get(n);
             }
-            int result = n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+            int result = n <= 1 ? n : fibonacci[0].apply(n - 1) + fibonacci[0].apply(n - 2);
             cache.put(n, result);
             return result;
         };
 
-        System.out.println("\nMemoization fibonacci(35): " + fibonacci.apply(35));
+        /*
+         * private int fibonacci(int n) {
+         * if (cache.containsKey(n)) {
+         * return cache.get(n);
+         * }
+         * int result = n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+         * cache.put(n, result);
+         * return result;
+         * }
+         */
+
+        System.out.println("\nMemoization fibonacci(35): " + fibonacci[0].apply(35));
 
         // 7. Pipeline processing
         Function<String, String> trimAndLower = s -> s.trim().toLowerCase();
         Function<String, String> removeSpaces = s -> s.replaceAll("\\s+", "");
-        Function<String, Integer> countVowels = s -> 
-            (int) s.chars().filter(c -> "aeiou".indexOf(c) >= 0).count();
+        Function<String, Integer> countVowels = s -> (int) s.chars().filter(c -> "aeiou".indexOf(c) >= 0).count();
 
         Function<String, Integer> textProcessor = trimAndLower
-            .andThen(removeSpaces)
-            .andThen(countVowels);
+                .andThen(removeSpaces)
+                .andThen(countVowels);
 
-        System.out.println("\nPipeline: vocali in '  Hello World  ': " + 
-            textProcessor.apply("  Hello World  "));
+        System.out.println("\nPipeline: vocali in '  Hello World  ': " +
+                textProcessor.apply("  Hello World  "));
 
         System.out.println();
     }
@@ -1070,9 +1091,17 @@ public class LambdaFunctionDemo {
             this.stipendio = stipendio;
         }
 
-        public String getNome() { return nome; }
-        public int getEta() { return eta; }
-        public double getStipendio() { return stipendio; }
+        public String getNome() {
+            return nome;
+        }
+
+        public int getEta() {
+            return eta;
+        }
+
+        public double getStipendio() {
+            return stipendio;
+        }
 
         @Override
         public String toString() {
@@ -1129,13 +1158,13 @@ public class LambdaFunctionDemo {
 
     private <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
         return list.stream()
-            .filter(predicate)
-            .collect(Collectors.toList());
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 
     private <T, R> List<R> mapList(List<T> list, Function<T, R> mapper) {
         return list.stream()
-            .map(mapper)
-            .collect(Collectors.toList());
+                .map(mapper)
+                .collect(Collectors.toList());
     }
 }
