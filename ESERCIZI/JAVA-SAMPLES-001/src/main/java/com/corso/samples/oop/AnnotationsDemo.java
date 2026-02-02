@@ -1,8 +1,18 @@
 package com.corso.samples.oop;
 
-import java.lang.annotation.*;
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Esempio completo e avanzato sull'uso delle Annotations in Java
@@ -285,8 +295,8 @@ public class AnnotationsDemo {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     @Secured(roles = {"ADMIN"}, permissions = {Permission.WRITE})
-    @Loggable(level = LogLevel.INFO, logExecutionTime = true)
-    @Transactional
+    //@Loggable(level = LogLevel.INFO, logExecutionTime = true)
+    //@Transactional
     @interface AdminOperation {
         String description() default "";
     }

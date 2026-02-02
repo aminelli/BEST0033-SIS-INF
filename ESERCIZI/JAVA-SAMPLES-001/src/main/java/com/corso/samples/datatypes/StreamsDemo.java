@@ -1,9 +1,27 @@
 package com.corso.samples.datatypes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.StringJoiner;
+import java.util.TreeSet;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 /**
  * Esempio completo e avanzato sull'uso degli Streams con Java Collections
@@ -1367,7 +1385,7 @@ public class StreamsDemo {
             .filter(o -> o.getStato().equals("Completato"))
             .map(Ordine::getCliente)
             .collect(Collectors.toSet());
-        System.out.println("  " + clientiConCompletati);
+        System.out.println("  " + clientiCompletati);
 
         // 8. Media età per città con almeno 2 persone
         System.out.println("\nMEDIA ETÀ PER CITTÀ (min 2 persone):");
