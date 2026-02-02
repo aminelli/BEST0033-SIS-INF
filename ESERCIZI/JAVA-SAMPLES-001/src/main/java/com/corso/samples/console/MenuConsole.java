@@ -14,6 +14,7 @@ import com.corso.samples.datatypes.StreamsDemo;
 import com.corso.samples.javaadv.EccezioniDemo;
 import com.corso.samples.javaadv.InputOutputDemo;
 import com.corso.samples.javaadv.LambdaFunctionDemo;
+import com.corso.samples.javaadv.LoggerDemo;
 import com.corso.samples.javaadv.ReflectionDemo;
 import com.corso.samples.javaadv.SerializationDemo;
 import com.corso.samples.javaadv.ThreadDemo;
@@ -91,6 +92,7 @@ public class MenuConsole {
         System.out.println("22. Serialization Demo");
         System.out.println("23. Input/Output Demo");
         System.out.println("24. Thread Demo");
+        System.out.println("25. Logger Demo");
         System.out.println("-".repeat(60));
         System.out.println("0. Esci");
         System.out.println("=".repeat(60));
@@ -185,7 +187,9 @@ public class MenuConsole {
             case 24:
                 ThreadDemo.sample();
                 break;
-
+            case 25:
+                LoggerDemo.sample();
+                break;
             case 0:
                 return false;
             default:
